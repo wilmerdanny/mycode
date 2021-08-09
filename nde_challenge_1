@@ -9,5 +9,7 @@ c="Sentences are sometimes a "
 
 
 
-print(c,'\n',a,'\n',b,'\n',sep="@@@",end='@@@')
 
+
+
+print(c, a, b, sep="@@@\n")
