@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+
+
+my_car={'make' : 'ford', 'model' : 'focus', 'color' : 'black', 'features' : ['2 doors', 'bluetooth', 'coins']}
+
+
+
+print(my_car['make'])
+
+
+print(f"Danny has {my_car['features'][2]} in his car.")
+
+
+
