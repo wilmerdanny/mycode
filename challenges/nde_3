@@ -13,4 +13,4 @@ pets = {"cats": ["fluffy", "snowball", "garfield"], "dogs": ["toto", "kujo", "sp
 
 
 
-print(f"I have the {pets.keys(['cats'])} {pets['cats'][0]}, {pets['cats'][1]}, and {pets['cats'][2]}, and the {pets.keys(['dogs'])} {pets['dogs'][0]}, {pets['dogs'][1]}, and {pets['dogs'][2]}.")
+print(f"I have the {list(pets.keys())[0]} {pets['cats'][0]}, {pets['cats'][1]}, and {pets['cats'][2]}, and the {list(pets.keys())[1]} {pets['dogs'][0]}, {pets['dogs'][1]}, and {pets['dogs'][2]}.")
