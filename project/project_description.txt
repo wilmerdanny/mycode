@@ -1,0 +1,1 @@
+A script that takes any Elon Musk tweet as input - it then takes what he tweets and searches every word for keywords that will match up against a corresponding stock market ticker or crypto ticker - then uses that ticker to pull financial information with critical information - converts it into multiple data formats - stores it in a database - sends charts/data via email 
