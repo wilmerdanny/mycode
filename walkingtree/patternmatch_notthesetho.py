@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 
-#  So you can enter things like, *.txt or *.pcap, but will NOT try looking in directories described in the global EXCLUDE list.
+#  So you can enter things like, *.txt or *.pcap, but 
+# will NOT try looking in directories described in the global EXCLUDE list.
 
 
 import os 
@@ -26,9 +27,10 @@ def find(pattern, path):
 
 def main():
     """runtime code"""
-    lookfor = input("What pattern am I looking for (Example: *.txt or *.cfg) ")
+    lookfor = (input("What pattern am I looking for (Example: *.txt or *.cfg) "))
+    lowerLookfor = lookfor.lower()
     lookwhere = input("What is the path in which I should search? ")
-    print("Results: ", find(lookfor, lookwhere)) # call function
+    print("Results: ", find(lowerLookfor, lookwhere)) # call function
 
 main()
 
