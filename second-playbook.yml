@@ -1,0 +1,11 @@
+---
+- name: Simple playbook
+  hosts: planetexpress 
+
+
+  tasks: 
+  - name: 
+    apt: 
+      name: figlet 
+      state: absent 
+    become: true 

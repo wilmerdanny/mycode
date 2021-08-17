@@ -10,8 +10,13 @@ import os
 # where to connect to 
 t = paramiko.Transport("10.10.2.3", 22) ## IP and port
 
+
+user_name = input(str("Please enter username: ")) 
+user_password = input(str("Please enter password: "))
+
+
 # how to connect (see other labs on using id_rsa private/public keypairs)
-t.connect(username="bender", password="alta3")
+t.connect(username= user_name, password= user_password)
 
 
 # make an sftp connetion object 

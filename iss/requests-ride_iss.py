@@ -26,6 +26,19 @@ def main():
     helmetson = groundctrl.json()
 
 
+
+    # display every key available in the API
+    print("KEYS\n")
+    #for key in helmetson:
+        #print(helmetson[key])
+
+    keys = helmetson.keys()
+    for key in keys:
+        print(keys[key])
+
+
+
+
     # display our pythonic data 
     print("\n\nConverted Python Data")
     print(helmetson) 
