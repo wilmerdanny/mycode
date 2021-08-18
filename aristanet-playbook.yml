@@ -1,0 +1,35 @@
+---
+- name: Arista Config Saver
+  hosts: arista_switches 
+  gather_facts: false
+  connection: network_cli
+  become: yes 
+  become_method: enable 
+
+
+  vars:
+    ansible_ssh_pass: alta3
+
+
+  tasks: 
+  - name: Arista Fact Collection 
+    eos_facts: 
+      gather_subset: all 
+
+
+  # this will be executed on the CONTROLLER
+  - name: Create Arista config save directory 
+    file: 
+      path: arista_config/
+      state: directory
+
+
+  # this will be executed on the CONTROLLER
+  - name: Arista Config Save
+    shell: "echo '{{ ansible_net_config }}' > arista_config/{{ inventory_hostname }}"
+
+  # this will be executed on the CONTROLLER 
+  - name: Arista Archival Process 
+    archive: 
+      path: arista_config/{{ inventory_hostname }}
+      remove: False 

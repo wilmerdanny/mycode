@@ -6,3 +6,15 @@ zoidberg ansible_host=10.10.2.5 ansible_user=zoidberg
 
 [planetexpress:vars]
 ansible_python_interpreter=/usr/bin/python3
+
+
+
+[arista_switches]
+sw-1
+sw-2
+
+[arista_switches:vars]
+; variables specific to arista switches
+ansible_network_os=eos
+ansible_user=admin
+ansible_ssh_pass=alta3  
