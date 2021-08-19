@@ -2,7 +2,6 @@
 
 """A script that calls time series closing value data from the Alpha Vantage API database. Closing values and the overall average value will be displayed. Data will then be saved in a file if desired. | wilmerdanny@icloud.com"""
 
-import urllib.request
 import requests 
 import json 
 import datetime 
@@ -52,12 +51,10 @@ while interval not in supported:
     if interval in supported:
         break
 
-     
-
 
 # getting intraday data from user input (above) in JSON format 
 ## calling api
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval={interval}min&'+ alpha_creds
+url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval={interval}min&{alpha_creds}'
 ## requesting data
 r = requests.get(url)
 ## reading data as JSON 
@@ -68,13 +65,15 @@ data = r.json()
 key = data.get(f"Time Series ({interval}min)")
 
 # displaying values from specified json key
+
 prices = []
 for ts in key:
     high_price = data[f'Time Series ({interval}min)'][ts]['2. high']
     print(ts, high_price)
     prices.append(float(high_price))
 
-print(prices)
+#print(prices)
+print("\nAverage:")
 print(sum(prices)/len(prices))
 
 #print(json.dumps(data))
