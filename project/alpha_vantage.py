@@ -1,11 +1,15 @@
 #!/usr/bin/env python3 
 
+"""A script that calls time series closing value data from the Alpha Vantage API database. Closing values and the overall average value will be displayed. Data will then be saved in a file if desired. | wilmerdanny@icloud.com"""
+
 import urllib.request
 import requests 
 import json 
+import datetime 
 
 
 # getting api key from file 
+
 
 with open("/home/student/alpha.creds") as mycreds:
     alpha_creds = mycreds.read()
@@ -15,7 +19,8 @@ alpha_creds = "apikey=" + alpha_creds.strip("\n")
 
 
 
-
+now = datetime.datetime.now()
+print(now)
 # capturing "symbol" variable
 print("\nAPI function=TIME_SERIES_INTRADAY\n")
 print("Provide the symbol of the equity of your choice.") 
@@ -30,23 +35,17 @@ while len(symbol) > 4:
     symbol = input("\nsymbol=")
     if len(symbol) < 4:
         break
-     
-
 
 
 # capturing "interval" variable 
-print("\nTime interval between two consecutive data points in the time series.")
+print("\nEnter desired time interval between two consecutive data points in the time series.")
 print("The following values are supported (in minutes):")   
 print("1, 5, 15, 30, 60")
 print("=================================================================")
 interval = int(input(">>>"))
-#while true: 
-    #if interval != 1, 5, 15, 30, 60:
-        #print("Unsupported value. Try again.")
-        #interval = input(">>>")
 
+## if "interval" input is not compatible, loop until it is 
 supported = [1, 5, 15, 30, 60]
-
 while interval not in supported:
     print("\nUnsupported value, try again.")
     interval = int(input(">>>"))
@@ -68,22 +67,15 @@ data = r.json()
 # getting specified json key
 key = data.get(f"Time Series ({interval}min)")
 
-# displaying values from specified json key 
-for values in key:
-    print (values)
+# displaying values from specified json key
+prices = []
+for ts in key:
+    high_price = data[f'Time Series ({interval}min)'][ts]['2. high']
+    print(ts, high_price)
+    prices.append(float(high_price))
 
+print(prices)
+print(sum(prices)/len(prices))
 
-
-
-
-
-"""
-# printing income statement data 
-url = f'https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&{alpha_creds}'
-r = requests.get(url)
-data = r.json()
-
-for net in data["results"]:
-    print(data.get("netIncome"))
-"""
+#print(json.dumps(data))
 
