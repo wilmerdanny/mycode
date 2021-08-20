@@ -1,0 +1,17 @@
+My Project Name: Elon Musk Market Tweets
+
+
+Overview
+What influnence does Elon Musk have on financial markets he commonly tweets about? This script will use his tweets as input and pull information.
+
+Inspiration
+I chose to do this project because of my interest in finance and how public figures can influence markets.
+
+- A script takes any Elon Musk tweet as input 
+- Searches every word for specified keywords 
+- specified keywords will match up against a corresponding stock market ticker or crypto ticker 
+- Uses ticker to pull current and historical financial data 
+- performs operations on this data
+- converts this data into multiple data formats 
+- stores data in a database 
+- sends results (charts/data) via email 
